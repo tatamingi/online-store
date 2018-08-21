@@ -13,6 +13,7 @@ import { ProductFilterComponent } from './components/product-filter/product-filt
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     PromoComponent,
     FooterComponent,
     ProductsComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
