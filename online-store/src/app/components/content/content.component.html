@@ -1,0 +1,10 @@
+<img src="../../../assets/top-desktop-banner.jpg" alt="">
+<p class="sale">Sale: Now up to 50% off</p>
+<div class="content">
+  <div class="content__block" *ngFor="let type of types">
+    <a href="#">
+      <img src="{{type.imgUrl}}">
+      <span>{{type.title}}</span>
+    </a>
+  </div>
+</div>

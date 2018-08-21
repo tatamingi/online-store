@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1.5em;
+  text-transform: uppercase;
+  font-size: 10pt;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.logo {
+  max-height: 2rem;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+  li:not(:last-child) {
+    margin-right: 2.25rem;
+  }
+}
+
+a:hover {
+  text-decoration: underline;
+}

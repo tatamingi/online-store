@@ -1,0 +1,41 @@
+:host {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wrapper {
+  display: inline-block;
+  &:hover .wrapper__filter {
+    background: rgba(0, 0, 0, .1);
+  }
+  &:hover .wrapper__overlay {
+    display: block;
+  }
+}
+
+.wrapper__filter {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 8pt;
+  background: rgba(0,0,0,.06);
+  padding: 0.6rem;
+}
+
+.wrapper__overlay {
+  position: absolute;
+  left: 0;
+  background: rgba(0, 0, 0, .1);
+  width: 100%;
+  display: none;
+}
+
+.wrapper__overlay-content {
+  li {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 7.5pt;
+    padding: 0.6rem;
+  }
+}
