@@ -1,9 +1,8 @@
 export const TYPES = [
   'dresses',
-  'skirts',
-  'jackets',
-  'trousers',
-  'swimsuits'
+  'tops',
+  'denim',
+  'swim'
 ]
 
 export const PRICES = [
@@ -19,19 +18,19 @@ export const FILTERS = [
 ]
 
 export const TYPES_MAIN_PAGE = [{
-    title: 'Dresses',
+    title: 'dresses',
     imgUrl: '../../../assets/brigitte-dress-lipstick.jpg'
   },
   {
-    title: 'Denim',
+    title: 'denim',
     imgUrl: '../../../assets/Macgraw-crop-jean-stripe.jpg'
   },
   {
-    title: 'Swim',
+    title: 'swim',
     imgUrl: '../../../assets/Jade-one-piece-tropicana.jpg'
   },
   {
-    title: 'Tees/Tops',
+    title: 'tops',
     imgUrl: '../../../assets/Aurora-top-black.jpg'
   }]
 

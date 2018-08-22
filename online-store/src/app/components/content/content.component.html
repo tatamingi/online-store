@@ -2,9 +2,9 @@
 <p class="sale">Sale: Now up to 50% off</p>
 <div class="content">
   <div class="content__block" *ngFor="let type of types">
-    <a href="#">
+    <a routerLink="/categories" [queryParams]="{ category: type.title }">
       <img src="{{type.imgUrl}}">
-      <span>{{type.title}}</span>
+      <p>{{type.title}}</p>
     </a>
   </div>
 </div>

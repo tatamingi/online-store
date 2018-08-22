@@ -1,7 +1,7 @@
-<div class="images">
+<div class="images" *ngIf="product">
   <img *ngFor="let image of product.imageUrls" src="{{image}}">
 </div>
-<div class="details">
+<div class="details" *ngIf="product">
   <div class=fixed>
     <div class="details__wrapper">
       <span class="details__name">{{product.title}}</span>
@@ -16,6 +16,6 @@
     </div>
     <button class="details__add-to-bag">Add to bag</button>
     <p><i class="fa fa-truck"></i>Free US shipping and returns</p>
-    <p>Fabric: 100% viscose</p>
+    <p>Fabric: {{product.fabric}}</p>
   </div>
 </div>

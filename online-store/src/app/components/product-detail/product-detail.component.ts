@@ -12,7 +12,6 @@ import { Product } from '../../models/classes';
 export class ProductDetailComponent implements OnInit {
   public sizes = [ 0, 2, 4, 6, 8, 10, 12, 14 ];
   public product: Product;
-  public fixed = true;
 
   constructor(
     private _route: ActivatedRoute,

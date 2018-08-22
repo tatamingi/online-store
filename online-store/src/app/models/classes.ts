@@ -7,11 +7,11 @@ export class Category {
 
 export class Product {
   constructor(
-    public key: string,
     public title: string,
     public price: number,
     public category: string,
     public imageUrls: string[],
-    public description: string
+    public description: string,
+    public fabric: string
   ) {}
 }

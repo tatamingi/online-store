@@ -1,6 +1,6 @@
 <app-product-filter></app-product-filter>
 <div class="wrapper">
-  <app-product-card *ngFor="let product of products$ | async"
+  <app-product-card *ngFor="let product of filteredProducts"
                     [product]="product"></app-product-card>
 </div>
 
