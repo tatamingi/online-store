@@ -1,7 +1,8 @@
-<a href="#" class="preview-container">
+<a routerLink="/detail/{{product.key}}" class="preview-container">
   <img class="top" src="{{product.imageUrls[0]}}" [style.position]="'absolute'" [style.left]="'0'">
   <img class="bottom" src="{{product.imageUrls[1]}}">
   <button>Quick add</button>
 </a>
-<p class="preview-title"><a href="#">{{product.title}}</a>{{product.price}}$</p>
+<p class="preview-title">
+  <a routerLink="/detail/{{product.key}}">{{product.title}}</a>{{product.price}}$</p>
 

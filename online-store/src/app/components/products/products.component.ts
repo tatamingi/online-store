@@ -12,7 +12,9 @@ import { Product } from '../../models/classes';
 export class ProductsComponent implements OnInit {
   public products$: Observable<Product[]>;
 
-  constructor(private _productService: ProductService) {
+  constructor(
+    private _productService: ProductService
+  ) {
     this.products$ = this._productService.getAll();
   }
 

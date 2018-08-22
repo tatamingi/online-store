@@ -1,0 +1,21 @@
+<div class="images">
+  <img *ngFor="let image of product.imageUrls" src="{{image}}">
+</div>
+<div class="details">
+  <div class=fixed>
+    <div class="details__wrapper">
+      <span class="details__name">{{product.title}}</span>
+      <span class="details__price">{{product.price}}$</span>
+    </div>
+    <p class="details__description">{{product.description}}</p>
+    <div class="details__sizes">
+      <span>Select size</span>
+      <div class="sizes-wrapper">
+        <div class="sizes-wrapper__block" *ngFor="let size of sizes">{{size}}</div>
+      </div>
+    </div>
+    <button class="details__add-to-bag">Add to bag</button>
+    <p><i class="fa fa-truck"></i>Free US shipping and returns</p>
+    <p>Fabric: 100% viscose</p>
+  </div>
+</div>
