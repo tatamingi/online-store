@@ -5,7 +5,7 @@
   <div class="wrapper__overlay">
     <ul class="wrapper__overlay-content">
       <li *ngFor="let item of items">
-        <a routerLink="/categories" [queryParams]="{ category: item }">{{item}}</a>
+        <a routerLink="/categories" [queryParams]="item.queryParam">{{item.title}}</a>
       </li>
     </ul>
   </div>

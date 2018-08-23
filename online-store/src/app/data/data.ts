@@ -1,21 +1,29 @@
-export const TYPES = [
-  'dresses',
-  'tops',
-  'denim',
-  'swim'
+export const TYPES = [{
+    title: 'dresses',
+    queryParam: { category: 'dresses' }
+  },
+  {
+    title: 'tops',
+    queryParam: { category: 'tops' }
+  },
+  {
+    title: 'denim',
+    queryParam: { category: 'denim' }
+  },
+  {
+    title: 'swim',
+    queryParam: { category: 'swim' }
+  }
 ]
 
-export const PRICES = [
-  '50-100',
-  '100-150',
-  '150-200',
-  '200-250'
-]
-
-export const FILTERS = [
-  'price low to high',
-  'price high to low'
-]
+export const FILTERS = [{
+    title: 'price low to high',
+    queryParam: { sort: 'asc' }
+  },
+  {
+    title: 'price high to low',
+    queryParam: { sort: 'desc' }
+  }]
 
 export const TYPES_MAIN_PAGE = [{
     title: 'dresses',
@@ -37,10 +45,6 @@ export const TYPES_MAIN_PAGE = [{
 export const CATEGORIES = [{
     title: 'types',
     items: TYPES
-  },
-  {
-    title: 'prices',
-    items: PRICES
   },
   {
     title: 'sort by',

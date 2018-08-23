@@ -4,7 +4,6 @@ import { Product } from '../../models/classes';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import * as _ from 'lodash';
-import {AngularFireDatabase} from "angularfire2/database";
 
 
 @Component({
@@ -18,7 +17,6 @@ export class ProductsComponent implements OnInit {
   public products: Product[];
 
   constructor(
-    private db: AngularFireDatabase,
     private _productService: ProductService,
     private _route: ActivatedRoute
   ) {
@@ -34,6 +32,12 @@ export class ProductsComponent implements OnInit {
       products;
   }
 
+  private _applySort = (order: string, products: Product[]) => {
+    this.filteredProducts = !_.isNil(order) ?
+      _.orderBy(products, ['price'], [order]) :
+      products;
+  }
+
   private _populateProducts = (): void => {
     this._productService
       .getAll()
@@ -45,6 +49,8 @@ export class ProductsComponent implements OnInit {
       ).subscribe(params => {
       const category = params.get('category');
       this._applyFilter(category, this.products);
+      const order = params.get('sort');
+      this._applySort(order, this.products);
     });
   }
 }

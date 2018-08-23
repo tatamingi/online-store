@@ -1,7 +1,14 @@
 export class Category {
   constructor(
     public title: string,
-    public items: string[]
+    public items: CategoryItem[]
+  ) {}
+}
+
+export class CategoryItem {
+  constructor(
+    public title: string,
+    public queryParam: any
   ) {}
 }
 

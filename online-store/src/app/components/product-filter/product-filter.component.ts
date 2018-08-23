@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CATEGORIES } from '../../data/data';
-import { Category } from '../../models/classes';
+import { Category, CategoryItem } from '../../models/classes';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { Category } from '../../models/classes';
   styleUrls: ['./product-filter.component.scss']
 })
 export class ProductFilterComponent implements OnInit {
-  public items: string[];
+  public items: CategoryItem[];
   public categories: Category[];
 
   constructor() {
