@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs/index';
+import { ShoppingCart } from '../../models/classes';
+import { ProductCartService } from '../../services/product-cart.service';
+import { ShoppingCartComponent } from '../cart-wrapper/cart-wrapper.component';
+
 
 @Component({
   selector: 'app-top-bar',
@@ -6,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  constructor() { }
+  public cart$: Observable<ShoppingCart>;
+  @ViewChild('cart') private _cart: ShoppingCartComponent;
 
-  ngOnInit() {
+  constructor(
+    private _productCartService: ProductCartService
+  ) { }
+
+  async ngOnInit() {
+    this.cart$ = await this._productCartService.getCart();
   }
 
+  public toggleCart = (event: Event): void => {
+    event.preventDefault();
+    this._cart.visible ?
+      this._cart.hide() :
+      this._cart.show(event)
+  }
 }

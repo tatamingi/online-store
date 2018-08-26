@@ -1,0 +1,15 @@
+.wrapper {
+  width: 17rem;
+}
+
+.wrapper__checkout_action {
+  font-size: 0.75rem;
+  display: block;
+  margin: 1em;
+  text-align: center;
+}
+
+:host /deep/ .button {
+  height: 3em;
+  font-size: 0.75rem;
+}

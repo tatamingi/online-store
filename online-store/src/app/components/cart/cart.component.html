@@ -1,0 +1,14 @@
+<div class="wrapper" *ngIf="cart">
+  <div>
+    <app-product-card-summary
+      *ngFor="let item of cart.items"
+      [item]="item"></app-product-card-summary>
+  </div>
+  <div class="wrapper__checkout">
+    <a class="wrapper__checkout_action">View bag</a>
+    <button class="button button_large">
+      <a href="">Checkout</a>
+    </button>
+  </div>
+</div>
+

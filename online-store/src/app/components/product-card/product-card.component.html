@@ -1,8 +1,15 @@
-<a routerLink="/detail/{{product.key}}" class="preview-container">
+<a routerLink="/detail/{{product.key}}" class="preview">
   <img class="top" src="{{product.imageUrls[0]}}" [style.position]="'absolute'" [style.left]="'0'">
-  <img class="bottom" src="{{product.imageUrls[1]}}">
-  <button>Quick add</button>
+  <img src="{{product.imageUrls[1]}}">
+  <div class="preview__add">
+    <button>Quick add</button>
+    <div class="preview__sizes">
+      <span class="preview__size-block"
+            (click)="addToCart($event, product, size)"
+            *ngFor="let size of sizes">{{size}}</span>
+    </div>
+  </div>
 </a>
-<p class="preview-title">
+<p class="title">
   <a routerLink="/detail/{{product.key}}">{{product.title}}</a>{{product.price}}$</p>
 

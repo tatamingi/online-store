@@ -15,6 +15,7 @@ a {
   text-decoration: none;
   color: black;
   outline: none;
+  cursor: pointer;
 }
 
 img {
@@ -24,4 +25,21 @@ img {
 button {
   border: none;
   outline: none;
+}
+
+.button {
+  height: 3.5em;
+  background-color: rgba(0,0,0,.8);
+  color: #f5f5f5;
+  text-transform: uppercase;
+  cursor: pointer;
+  &.button_large {
+    width: 100%;
+  }
+  &.button_small {
+    width: 40%;
+  }
+  a {
+    color: inherit;
+  }
 }

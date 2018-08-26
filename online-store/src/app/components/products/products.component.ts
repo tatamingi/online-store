@@ -26,13 +26,13 @@ export class ProductsComponent implements OnInit {
     this._populateProducts();
   }
 
-  private _applyFilter = (category: string, products: Product[]) => {
+  private _applyFilter = (category: string, products: Product[]): void => {
     this.filteredProducts = !_.isNil(category) ?
       products.filter(product => product.category === category) :
       products;
   }
 
-  private _applySort = (order: string, products: Product[]) => {
+  private _applySort = (order: string, products: Product[]): void => {
     this.filteredProducts = !_.isNil(order) ?
       _.orderBy(products, ['price'], [order]) :
       products;

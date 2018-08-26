@@ -1,0 +1,9 @@
+<div *ngIf="visible && cart" class="cart-wrapper" #cartContainer>
+  <span *ngIf="cart.totalItemsCount == 0; else productCards" class="cart-wrapper__empty-cart">
+    Your cart is empty
+  </span>
+  <ng-template #productCards>
+    <app-cart [cart]="cart"></app-cart>
+  </ng-template>
+</div>
+

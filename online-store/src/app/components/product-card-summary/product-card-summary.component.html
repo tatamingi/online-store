@@ -1,0 +1,14 @@
+<div class="product-list">
+  <div class="product-list__info">
+    <a routerLink="/detail/{{item.key}}">{{item.title}}</a>
+    <span>{{item.price}}$</span>
+    <div class="product-list__option-group">
+      <p class="product-list__option">Size: {{item.size}}</p>
+      <p class="product-list__option">Qty: {{item.quantity}}</p>
+    </div>
+    <button (click)="removeItem($event)">Remove item</button>
+  </div>
+  <div class="product-list__media">
+    <img src="{{item.imageUrls[0]}}">
+  </div>
+</div>

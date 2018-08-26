@@ -15,6 +15,9 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ShoppingCartComponent } from './components/cart-wrapper/cart-wrapper.component';
+import { ProductCardSummaryComponent } from './components/product-card-summary/product-card-summary.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductsComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ShoppingCartComponent,
+    ProductCardSummaryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

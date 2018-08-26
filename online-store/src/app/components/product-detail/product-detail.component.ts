@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/classes';
+import { SIZES } from '../../data/data';
 
 
 @Component({
@@ -10,13 +11,15 @@ import { Product } from '../../models/classes';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  public sizes = [ 0, 2, 4, 6, 8, 10, 12, 14 ];
+  public sizes: number[];
   public product: Product;
 
   constructor(
     private _route: ActivatedRoute,
     private _productService: ProductService
-  ) { }
+  ) {
+    this.sizes = SIZES;
+  }
 
   ngOnInit() {
     const key = this._route.snapshot.paramMap.get('key');

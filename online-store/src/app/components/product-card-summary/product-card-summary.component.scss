@@ -1,0 +1,40 @@
+.product-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  font-size: 9pt;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+
+.product-list__info {
+  a {
+    margin-right: 1em;
+  }
+  button {
+    background: transparent;
+    padding: 0;
+    font-size: 1em;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.product-list__media {
+  width: 40%;
+  img {
+    width: 100%;
+  }
+}
+
+.product-list__option-group {
+  margin: 1em 0;
+}
+
+.product-list__option {
+  text-transform: none;
+  margin: 0 0 0.5em 0;
+}

@@ -1,13 +1,24 @@
-<div [style.display]="'flex'">
-  <a routerLink="/"><img src="../../../assets/logo.png" class="logo"></a>
+<div class="wrapper">
+  <div class="wrapper__left-side">
+    <a routerLink="/"><img src="../../../assets/logo.png" class="logo"></a>
+    <ul class="menu">
+      <li><a routerLink="/categories">shop</a></li>
+      <li><a href="#">sale</a></li>
+      <li><a href="#">about</a></li>
+    </ul>
+  </div>
   <ul class="menu">
-    <li><a routerLink="/categories">shop</a></li>
-    <li><a href="#">sale</a></li>
-    <li><a href="#">about</a></li>
+    <li><a href="#">sign in</a></li>
+    <li [ngClass]="{'selected': cart.visible}">
+      <a href="#" (click)="toggleCart($event)">
+        <i class="fa fa-shopping-cart"></i>bag
+        <span *ngIf="cart$ | async as cart"
+              [ngClass]="{'hidden': cart.totalItemsCount == 0}">{{ cart.totalItemsCount }}</span>
+      </a>
+      <cart-wrapper #cart [cart]="cart$ | async"></cart-wrapper>
+    </li>
   </ul>
 </div>
-<ul class="menu">
-  <li><a href="#">sign in</a></li>
-  <li><a href="#">bag</a></li>
-</ul>
+
+
 
