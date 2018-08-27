@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
       const category = params.get('category');
       this._applyFilter(category, this.products);
       const order = params.get('sort');
-      this._applySort(order, this.products);
+      this._applySort(order, this.filteredProducts);
     });
   }
 }
