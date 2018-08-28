@@ -1,4 +1,4 @@
-<div class="product-list">
+<div class="product-list" [ngClass]="{'dotted-border': border}">
   <div class="product-list__info">
     <a routerLink="/detail/{{item.key}}">{{item.title}}</a>
     <span>{{item.price}}$</span>

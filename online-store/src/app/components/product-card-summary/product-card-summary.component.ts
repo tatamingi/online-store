@@ -9,6 +9,7 @@ import { ProductCartService } from '../../services/product-cart.service';
 })
 export class ProductCardSummaryComponent implements OnInit {
   @Input() public item: ShoppingCartItem;
+  @Input() public border: boolean;
 
   constructor(private _productCartService: ProductCartService) { }
 

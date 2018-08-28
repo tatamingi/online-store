@@ -8,6 +8,7 @@ import { ShoppingCart } from '../../models/classes';
 })
 export class CartItemsComponent implements OnInit {
   @Input() public cart: ShoppingCart;
+  @Input() public border: boolean;
 
   constructor() { }
 

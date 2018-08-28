@@ -35,7 +35,7 @@ export class ShoppingCart {
       this.items.push(
         new ShoppingCartItem({
           ...itemsMap[productId],
-          key: productId
+          key: itemsMap[productId].key
         }));
     }
   }

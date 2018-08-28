@@ -3,6 +3,7 @@ import { Product, ShoppingCartItem } from '../../models/classes';
 import { SIZES } from '../../data/data';
 import { ProductCartService } from '../../services/product-cart.service';
 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -11,7 +12,7 @@ import { ProductCartService } from '../../services/product-cart.service';
 export class ProductCardComponent implements OnInit {
   @Input() public product: Product;
 
-  public sizes: string[];
+  public sizes: number[];
 
   constructor(private _productCartService: ProductCartService) {
     this.sizes = SIZES;
@@ -21,6 +22,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   public addToCart = (event: Event, product: Product, size: string): void => {
+    debugger
     const productToCart = new ShoppingCartItem({
       title: product.title,
       imageUrls: product.imageUrls,

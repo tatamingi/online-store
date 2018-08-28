@@ -48,16 +48,36 @@ export class ProductCartService {
   private async _updateItem(product: ShoppingCartItem, change: number) {
     const cartId = await this._getOrCreateCartId();
     const item$ = this._getItem(cartId, product.key);
-    item$.snapshotChanges().pipe(
+
+    const items$ = this.db.list<ShoppingCartItem>('/shopping-carts/' + cartId + '/items/');
+    items$.snapshotChanges().pipe(
       take(1)
-    ).subscribe(item => {
-      product.quantity = (item.payload.val() ? item.payload.val().quantity : 0) + change;
-      product.size = item.payload.val() ? item.payload.val().size + ', ' + product.size : product.size;
-      if (product.quantity === 0) {
-        item$.remove();
-      } else {
-        item$.update(product);
-      }
-    });
+    ).subscribe((changes) => {
+      debugger
+        const existingItem$ = changes.find((change) => {
+          debugger
+          return change.payload.val().key === product.key &&
+          change.payload.val().size === product.size}
+          );
+
+        if (!_.isNil(existingItem$)) {
+          product.quantity = existingItem$.payload.val().quantity + change;
+          product.quantity === 0 ?
+            this._getItem(cartId, existingItem$.payload.key).remove() :
+            this._getItem(cartId, existingItem$.payload.key).update(product);
+        } else {
+          product.quantity = 1;
+          this.db.list<ShoppingCartItem>('/shopping-carts/' + cartId + '/items/')
+            .push(product);
+        }
+      })
+
+
+    // item$.snapshotChanges().pipe(
+    //   take(1)
+    // ).subscribe(item => {
+    //   product.quantity = (item.payload.val() ? item.payload.val().quantity : 0) + change;
+    //
+    // });
   }
 }
