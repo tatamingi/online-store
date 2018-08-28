@@ -1,0 +1,6 @@
+<div class="wrapper" *ngIf="cart">
+  <app-product-card-summary
+    *ngFor="let item of cart.items"
+    [item]="item"></app-product-card-summary>
+</div>
+

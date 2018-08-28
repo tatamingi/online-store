@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/index';
 import { ShoppingCart } from '../../models/classes';
 import { ProductCartService } from '../../services/product-cart.service';
-import { ShoppingCartComponent } from '../cart-wrapper/cart-wrapper.component';
+import { CartOverlayComponent } from '../cart-overlay/cart-overlay.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,10 +13,11 @@ import { ShoppingCartComponent } from '../cart-wrapper/cart-wrapper.component';
 })
 export class TopBarComponent implements OnInit {
   public cart$: Observable<ShoppingCart>;
-  @ViewChild('cart') private _cart: ShoppingCartComponent;
+  @ViewChild('cart') private _cart: CartOverlayComponent;
 
   constructor(
-    private _productCartService: ProductCartService
+    private _productCartService: ProductCartService,
+    private _router: Router
   ) { }
 
   async ngOnInit() {
@@ -24,6 +26,7 @@ export class TopBarComponent implements OnInit {
 
   public toggleCart = (event: Event): void => {
     event.preventDefault();
+    if (this._router.url === '/cart') { return }
     this._cart.visible ?
       this._cart.hide() :
       this._cart.show(event)

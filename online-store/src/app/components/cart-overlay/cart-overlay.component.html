@@ -3,7 +3,13 @@
     Your cart is empty
   </span>
   <ng-template #productCards>
-    <app-cart [cart]="cart"></app-cart>
+    <app-cart-items [cart]="cart"></app-cart-items>
+    <div class="checkout">
+      <a routerLink="/cart" class="checkout_action">View bag</a>
+      <button class="button button_large">
+        <a href="">Checkout</a>
+      </button>
+    </div>
   </ng-template>
 </div>
 

@@ -1,15 +1,41 @@
 .wrapper {
-  width: 17rem;
+  padding: 1.25em;
+  display: flex;
+  box-sizing: border-box;
+  height: calc(100vh - 5.5rem);
 }
 
-.wrapper__checkout_action {
-  font-size: 0.75rem;
-  display: block;
-  margin: 1em;
-  text-align: center;
+.header-wrapper {
+  padding-right: 2em;
+  border-right: 1px dotted rgba(0,0,0,.2);
+  flex-grow: 1;
 }
 
-:host /deep/ .button {
-  height: 3em;
-  font-size: 0.75rem;
+.summary-wrapper {
+  padding-left: 2em;
+  border-left: 1px dotted rgba(0,0,0,.2);
+  flex-grow: 1;
 }
+
+.header {
+  margin: 0 0 1.8em 0;
+  letter-spacing: 1px;
+  font-size: 13pt;
+}
+
+.summary {
+  margin-bottom: 1.2em;
+  p {
+    font-size: 0.875rem;
+    margin: 0.5em 0;
+  }
+}
+
+
+.cart-items-wrapper {
+  width: 24%;
+  padding: 0 7em;
+  max-height: calc(100vh - 5.5rem);
+  overflow: auto;
+}
+

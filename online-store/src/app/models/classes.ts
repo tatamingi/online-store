@@ -47,6 +47,12 @@ export class ShoppingCart {
     }
     return count;
   }
+
+  get totalPrice(): number {
+    let sum = 0;
+    this.items.forEach(item => sum += item.totalPrice);
+    return sum;
+  }
 }
 
 export class ShoppingCartItem {
@@ -55,7 +61,7 @@ export class ShoppingCartItem {
   public imageUrls: string[];
   public price: number;
   public quantity: number;
-  public size: number;
+  public size: string;
 
   constructor(init?: Partial<ShoppingCartItem>) {
     Object.assign(this, init);

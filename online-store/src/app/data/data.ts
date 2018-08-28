@@ -51,4 +51,4 @@ export const CATEGORIES = [{
     items: FILTERS
   }]
 
-export const SIZES = [ 0, 2, 4, 6, 8, 10, 12, 14 ];
+export const SIZES = [ '0', '2', '4', '6', '8', '10', '12', '14' ];

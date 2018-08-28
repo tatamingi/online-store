@@ -1,14 +1,15 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { ShoppingCart } from '../../models/classes';
 import { ProductCartService } from '../../services/product-cart.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
-  selector: 'cart-wrapper',
-  templateUrl: './cart-wrapper.component.html',
-  styleUrls: ['./cart-wrapper.component.scss']
+  selector: 'app-cart-overlay',
+  templateUrl: './cart-overlay.component.html',
+  styleUrls: ['./cart-overlay.component.scss']
 })
-export class ShoppingCartComponent implements OnInit {
+export class CartOverlayComponent implements OnInit {
   @ViewChild('cartContainer')
   public cartRef: ElementRef;
 
@@ -25,7 +26,10 @@ export class ShoppingCartComponent implements OnInit {
 
   public visible: boolean;
 
-  constructor(private _productCartService: ProductCartService) { }
+  constructor(
+    private _productCartService: ProductCartService
+    ) {
+  }
 
   ngOnInit() {
   }

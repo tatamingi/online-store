@@ -2,30 +2,17 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from "rxjs/index";
-import {Product, ShoppingCart, ShoppingCartItem} from '../models/classes';
+import { ShoppingCart, ShoppingCartItem } from '../models/classes';
 import { map, take } from 'rxjs/internal/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductCartService {
-  private _cartId: string;
-
   constructor(private db: AngularFireDatabase) { }
 
-  // public async setOrCreateCartId() {
-  //   debugger
-  //   this._cartId = localStorage.getItem('cartId');
-  //   if (_.isNil(this._cartId)) {
-  //     debugger
-  //     const result = await this._create();
-  //     this._cartId = result.key;
-  //     localStorage.setItem('cartId', this._cartId);
-  //   }
-  // }
-
   public async getCart(): Promise<Observable<ShoppingCart>> {
-    debugger
     const cartId = await this._getOrCreateCartId();
     const cart$ = this.db.object('/shopping-carts/' + cartId).valueChanges() as Observable<any>;
     return cart$.pipe(map(x => new ShoppingCart(x.items)))
@@ -65,6 +52,7 @@ export class ProductCartService {
       take(1)
     ).subscribe(item => {
       product.quantity = (item.payload.val() ? item.payload.val().quantity : 0) + change;
+      product.size = item.payload.val() ? item.payload.val().size + ', ' + product.size : product.size;
       if (product.quantity === 0) {
         item$.remove();
       } else {

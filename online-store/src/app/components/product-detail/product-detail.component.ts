@@ -11,7 +11,7 @@ import { SIZES } from '../../data/data';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  public sizes: number[];
+  public sizes: string[];
   public product: Product;
 
   constructor(

@@ -11,7 +11,7 @@ import { ProductCartService } from '../../services/product-cart.service';
 export class ProductCardComponent implements OnInit {
   @Input() public product: Product;
 
-  public sizes: number[];
+  public sizes: string[];
 
   constructor(private _productCartService: ProductCartService) {
     this.sizes = SIZES;
@@ -20,7 +20,7 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addToCart = (event: Event, product: Product, size: number): void => {
+  public addToCart = (event: Event, product: Product, size: string): void => {
     const productToCart = new ShoppingCartItem({
       title: product.title,
       imageUrls: product.imageUrls,
