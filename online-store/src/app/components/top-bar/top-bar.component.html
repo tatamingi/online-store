@@ -1,17 +1,20 @@
 <div class="wrapper">
   <div class="wrapper__left-side">
-    <a routerLink="/"><img src="../../../assets/logo.png" class="logo"></a>
-    <ul class="menu">
+    <a routerLink="/" class="logo-wrapper"><img src="../../../assets/logo.png" class="logo"></a>
+    <ul class="menu" [ngClass]="{'responsive': responsive}" #menu>
       <li><a routerLink="/categories">shop</a></li>
-      <li><a href="#">sale</a></li>
-      <li><a href="#">about</a></li>
+      <li><a href="#" (click)="$event.preventDefault()">sale</a></li>
+      <li><a href="#" (click)="$event.preventDefault()">about</a></li>
+      <li [ngClass]="{'selected': responsive}">
+        <i class="fa fa-bars" (click)="toggleMenu($event)"></i></li>
     </ul>
   </div>
   <ul class="menu">
-    <li><a href="#">sign in</a></li>
+    <li (click)="$event.preventDefault()"><a href="#">sign in</a></li>
     <li [ngClass]="{'selected': cart.visible}">
       <a href="#" (click)="toggleCart($event)">
-        <i class="fa fa-shopping-cart"></i>bag
+        <i class="fa fa-shopping-cart"></i>
+        <span class="bag-title">bag</span>
         <span *ngIf="cart$ | async as cart"
               [ngClass]="{'hidden': cart.totalItemsCount == 0}">{{ cart.totalItemsCount }}</span>
       </a>

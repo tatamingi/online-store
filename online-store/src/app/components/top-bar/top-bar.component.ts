@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs/index';
 import { ShoppingCart } from '../../models/classes';
 import { ProductCartService } from '../../services/product-cart.service';
@@ -12,6 +12,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
+  @ViewChild('menu')
+  public menuRef: ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  handleClick(event: Event) {
+    if (this.responsive && this.menuRef.nativeElement === event.target) {
+      return
+    }
+    this.responsive = false;
+  }
+
+  public responsive: boolean;
+
   public cart$: Observable<ShoppingCart>;
   @ViewChild('cart') private _cart: CartOverlayComponent;
 
@@ -30,5 +43,10 @@ export class TopBarComponent implements OnInit {
     this._cart.visible ?
       this._cart.hide() :
       this._cart.show(event)
+  }
+
+  public toggleMenu = (event: Event): void => {
+    this.responsive = this.responsive ? false : true;
+    event.stopPropagation();
   }
 }

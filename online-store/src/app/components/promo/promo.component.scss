@@ -7,3 +7,9 @@
     font-size: 0.8em;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .page-promo {
+    display: none;
+  }
+}

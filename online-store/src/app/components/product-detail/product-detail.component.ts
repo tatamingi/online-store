@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../models/classes';
+import {Product, ShoppingCartItem} from '../../models/classes';
 import { SIZES } from '../../data/data';
+import { ProductCartService } from "../../services/product-cart.service";
 
 
 @Component({
@@ -13,10 +14,12 @@ import { SIZES } from '../../data/data';
 export class ProductDetailComponent implements OnInit {
   public sizes: number[];
   public product: Product;
+  public  selectedSize: number;
 
   constructor(
     private _route: ActivatedRoute,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _productCartService: ProductCartService
   ) {
     this.sizes = SIZES;
   }
@@ -29,4 +32,20 @@ export class ProductDetailComponent implements OnInit {
       })
   }
 
+  public addToCart = (event: Event, product: Product): void => {
+    const productToCart = new ShoppingCartItem({
+      title: product.title,
+      imageUrls: product.imageUrls,
+      price: product.price,
+      key: product.key,
+      size: this.selectedSize
+    })
+    this._productCartService.addToCart(productToCart);
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  public selectSize = (size: number): void => {
+      this.selectedSize = size;
+  }
 }

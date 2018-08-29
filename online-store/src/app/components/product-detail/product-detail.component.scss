@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  margin: 0 10rem 5.5rem 10rem;
+  margin-bottom: 5.5rem;
   font-size: 0.8em;
   line-height: 1.5;
   letter-spacing: 0.5px;
@@ -8,8 +8,9 @@
 }
 
 .images {
-  width: 55%;
   flex-shrink: 0;
+  margin-left: 16%;
+  width: calc(50vw - 8.5%);
   img {
     width: 100%;
     &:not(:last-child) {
@@ -21,7 +22,6 @@
 .details {
   margin-left: 3em;
   position: relative;
-  max-width: 24rem;
 }
 
 .details__wrapper {
@@ -59,6 +59,7 @@
   font-size: 1.05em;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
+  &.selected,
   &:hover {
     background-color: rgba(0,0,0,.8);
     color: #f5f5f5;
@@ -74,4 +75,41 @@
 .fixed {
   position: fixed;
   max-width: 24rem;
+  margin-right: 10%;
+}
+
+@media screen and (max-width: 1080px) {
+  .images {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 793px) {
+  :host {
+    margin: 0 6rem 5.5rem 6rem;
+    flex-direction: column;
+  }
+  .images {
+    width: 100%;
+    margin: 0;
+    & img:last-child {
+      display: none;
+    }
+  }
+  .details {
+    margin: 0;
+    .fixed {
+      position: relative;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :host {
+    margin: 0 0 1.5rem 0;
+  }
+  .fixed {
+    margin: 1.5rem;
+  }
 }

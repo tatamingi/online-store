@@ -57,7 +57,7 @@ export class ShoppingCartItem {
   public imageUrls: string[];
   public price: number;
   public quantity: number;
-  public size: string;
+  public size: number;
 
   constructor(init?: Partial<ShoppingCartItem>) {
     Object.assign(this, init);

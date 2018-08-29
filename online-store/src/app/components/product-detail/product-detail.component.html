@@ -2,7 +2,7 @@
   <img *ngFor="let image of product.imageUrls" src="{{image}}">
 </div>
 <div class="details" *ngIf="product">
-  <div class=fixed>
+  <div class="fixed" *ngIf="product">
     <div class="details__wrapper">
       <span class="details__name">{{product.title}}</span>
       <span class="details__price">{{product.price}}$</span>
@@ -11,10 +11,13 @@
     <div class="details__sizes">
       <span>Select size</span>
       <div class="sizes-wrapper">
-        <div class="sizes-wrapper__block" *ngFor="let size of sizes">{{size}}</div>
+        <div class="sizes-wrapper__block"
+             [ngClass]="{'selected': size === selectedSize}"
+             *ngFor="let size of sizes"
+             (click)="selectSize(size)">{{size}}</div>
       </div>
     </div>
-    <button class="button button_small">Add to bag</button>
+    <button class="button button_small" (click)="addToCart($event, product)">Add to bag</button>
     <p><i class="fa fa-truck"></i>Free US shipping and returns</p>
     <p>Fabric: {{product.fabric}}</p>
   </div>

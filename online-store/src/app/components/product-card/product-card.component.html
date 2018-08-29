@@ -3,8 +3,7 @@
   <img src="{{product.imageUrls[1]}}">
   <div class="preview__add">
     <button>Quick add</button>
-    <div class="preview__sizes">
-      <span class="preview__size-block"
+    <div class="preview__sizes"><span class="preview__size-block"
             (click)="addToCart($event, product, size)"
             *ngFor="let size of sizes">{{size}}</span>
     </div>
@@ -12,4 +11,6 @@
 </a>
 <p class="title">
   <a routerLink="/detail/{{product.key}}">{{product.title}}</a>{{product.price}}$</p>
+
+
 

@@ -21,7 +21,7 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addToCart = (event: Event, product: Product, size: string): void => {
+  public addToCart = (event: Event, product: Product, size: number): void => {
     const productToCart = new ShoppingCartItem({
       title: product.title,
       imageUrls: product.imageUrls,

@@ -9,16 +9,18 @@ img {
 .sale {
   font-size: 2.5rem;
   text-align: center;
-  margin: 70px 0;
+  margin: 1.8em 0;
 }
 
 .content {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0 1.5em 4.5em 1.5em;
 }
 
 .content__block {
-  width: 25%;
+  width: 24%;
   a {
     display: block;
   }
@@ -27,8 +29,13 @@ img {
     font-size: 10pt;
     margin: 10px 5px;
   }
-  &:not(:last-child) {
-    margin-right: 1.25em;
-  }
 }
 
+@media screen and (max-width: 640px) {
+  .sale {
+    font-size: 2rem;
+  }
+  .content__block {
+    width: 48%;
+  }
+}
