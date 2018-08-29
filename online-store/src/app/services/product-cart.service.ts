@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from "rxjs/index";
+import {Observable, throwError} from "rxjs/index";
 import { ShoppingCart, ShoppingCartItem } from '../models/classes';
-import { map, take } from 'rxjs/internal/operators';
+import {catchError, map, take} from 'rxjs/internal/operators';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductCartService {
-  constructor(private db: AngularFireDatabase) { }
+  constructor(
+    private db: AngularFireDatabase,
+    private _http: HttpClient
+    ) { }
 
   public async getCart(): Promise<Observable<ShoppingCart>> {
     const cartId = await this._getOrCreateCartId();
     const cart$ = this.db.object('/shopping-carts/' + cartId).valueChanges() as Observable<any>;
-    return cart$.pipe(map(x => new ShoppingCart(x.items)))
+    return cart$.pipe(map(x => {
+      return new ShoppingCart(x.items)
+    }))
   }
 
   public async addToCart(product: ShoppingCartItem) {
@@ -24,6 +30,16 @@ export class ProductCartService {
 
   public async removeFromCart(product: ShoppingCartItem) {
     this._updateItem(product, -1);
+  }
+
+  public checkout = (cartItems: ShoppingCartItem[]): Observable<ShoppingCartItem[]> => {
+    const url='/checkout';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this._http.post<ShoppingCartItem[]>(url, cartItems, httpOptions)
   }
 
   private _create = () =>

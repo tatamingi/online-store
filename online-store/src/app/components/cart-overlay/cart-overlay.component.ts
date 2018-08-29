@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { ShoppingCart } from '../../models/classes';
+import {ShoppingCart, ShoppingCartItem} from '../../models/classes';
 import { ProductCartService } from '../../services/product-cart.service';
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -42,5 +42,11 @@ export class CartOverlayComponent implements OnInit {
 
   public hide = (): void => {
     this.visible = false;
+  }
+
+  public checkout = (cartItems: ShoppingCartItem[], event: Event): void => {
+    this._productCartService.checkout(cartItems)
+      .subscribe();
+    event.stopPropagation();
   }
 }

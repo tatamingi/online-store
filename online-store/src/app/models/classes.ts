@@ -29,14 +29,10 @@ export class ShoppingCart {
 
   constructor(public itemsMap: { [key: string]: ShoppingCartItem }) {
     this.itemsMap = itemsMap || {};
-
     for (const productId in itemsMap) {
-
       this.items.push(
-        new ShoppingCartItem({
-          ...itemsMap[productId],
-          key: itemsMap[productId].key
-        }));
+        new ShoppingCartItem(itemsMap[productId])
+      );
     }
   }
 

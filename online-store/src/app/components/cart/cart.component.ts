@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCartService } from '../../services/product-cart.service';
 import { Observable } from 'rxjs/index';
-import { ShoppingCart } from '../../models/classes';
+import {ShoppingCart, ShoppingCartItem} from '../../models/classes';
+
 
 @Component({
   selector: 'app-cart',
@@ -10,6 +11,7 @@ import { ShoppingCart } from '../../models/classes';
 })
 export class CartComponent implements OnInit {
   public cart$: Observable<ShoppingCart>;
+  public visible: boolean;
 
   constructor(private _productCartService: ProductCartService) { }
 
@@ -17,4 +19,8 @@ export class CartComponent implements OnInit {
     this.cart$ = await this._productCartService.getCart();
   }
 
+  public checkout = (cartItems: ShoppingCartItem[]): void => {
+    this._productCartService.checkout(cartItems)
+      .subscribe();
+  }
 }

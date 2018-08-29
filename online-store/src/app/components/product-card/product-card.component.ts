@@ -22,7 +22,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   public addToCart = (event: Event, product: Product, size: string): void => {
-    debugger
     const productToCart = new ShoppingCartItem({
       title: product.title,
       imageUrls: product.imageUrls,
